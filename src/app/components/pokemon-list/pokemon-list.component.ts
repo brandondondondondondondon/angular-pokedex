@@ -30,4 +30,19 @@ export class PokemonListComponent implements OnInit {
     return `/pokemon/icons/types/${typeName}.svg`;
   }
 
+  getPokemonIconUrl(pokemon: Pokemon): string {
+    // Convert dexNr to a 3-digit padded string
+    const dexNr = pokemon.dexNr.toString().padStart(3, '0');
+    // Convert the English name to lowercase and replace spaces (if any) with dashes
+    const name = pokemon.names.English.toLowerCase().replace(/ /g, '-');
+    // Build and return the URL to the icon image. 
+    // Adjust the URL path if your public folder is served differently.
+    return `/pokemon/icons/${dexNr}-${name}.svg`;
+  }
+
+  onIconError(event: Event): void {
+    const target = event.target as HTMLImageElement;
+    // Set the source to a default icon when the original fails
+    target.src = '/pokemon/icons/000-default.svg';
+  }
 }

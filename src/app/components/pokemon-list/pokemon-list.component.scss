@@ -29,40 +29,47 @@
     &:hover {
       transform: scale(1.05);
     }
-  }
   
-  .pokemon-number {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    background-color: #e53935;
-    color: #fff;
-    padding: 2px 6px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    border-radius: 4px;
-  }
+    .pokemon-number {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background-color: #e53935;
+      color: #fff;
+      padding: 2px 6px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border-radius: 4px;
+    }
   
-  .pokemon-link {
-    text-decoration: none;
-    color: inherit;
-    width: 100%;
-    text-align: center;
-  }
+    .pokemon-icon {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
   
-  .pokemon-name {
-    margin-top: 30px; /* creates space below the dex number */
-  }
-
-  .pokemon-types {
-    margin-top: 10px;
-    display: flex;
-    gap: 8px; // space between icons
-    justify-content: center;
-    align-items: center;
-  }
+    .pokemon-link {
+      text-decoration: none;
+      color: inherit;
+      width: 100%;
+      text-align: center;
+    }
   
-  .type-icon {
-    width: 24px;
-    height: 24px;
+    .pokemon-name {
+      margin-top: 10px;
+    }
+  
+    .pokemon-types {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+  
+      .type-icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
   }
