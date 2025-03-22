@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "deploy": "npx angular-cli-ghpages --dir=dist/angular-pokedex",
+    "github-build": "ng build --configuration production --base-href 'https://brandondondondondondondon.github.io/angular-pokedex/'",
+    "github-deploy": "npx angular-cli-ghpages --dir=dist/angular-pokedex/browser",
     "test": "ng test"
   },
   "private": true,
