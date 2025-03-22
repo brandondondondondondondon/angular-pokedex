@@ -1,5 +1,5 @@
 <div class="pokemon-detail" *ngIf="pokemon">
-    <h1>{{ pokemon.name | titlecase }}</h1>
+    <h1>{{ pokemon.name }}</h1>
     <img [src]="pokemon.sprites?.front_default" alt="{{ pokemon.name }}" />
     <div class="stats">
       <h3>Stats</h3>
