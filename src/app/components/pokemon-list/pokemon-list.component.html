@@ -1,0 +1,10 @@
+<div class="pokedex">
+    <h1>Pokédex</h1>
+    <div class="pokemon-grid">
+      <div *ngFor="let pokemon of pokemons" class="pokemon-card">
+        <a [routerLink]="['/pokemon', pokemon.name]">
+          <h3>{{ pokemon.name | titlecase }}</h3>
+        </a>
+      </div>
+    </div>
+  </div>
