@@ -60,3 +60,4 @@ For more information on using the Angular CLI, including detailed command refere
 
 [Pokedex Data Source](https://pokemon-go-api.github.io/pokemon-go-api/api/pokedex.json)
 [Pokemon Type Icons](https://github.com/partywhale/pokemon-type-icons)
+[Pokemon Icons](https://github.com/TheArtificial/pokemon-icons)
