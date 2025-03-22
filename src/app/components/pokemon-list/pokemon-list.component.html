@@ -1,10 +1,25 @@
 <div class="pokedex">
-    <h1>Pokédex</h1>
-    <div class="pokemon-grid">
-      <div *ngFor="let pokemon of pokemons" class="pokemon-card">
-        <a [routerLink]="['/pokemon', pokemon.name]">
-          <h3>{{ pokemon.name }}</h3>
-        </a>
+  <h1>Pokédex</h1>
+  <div class="pokemon-grid">
+    <div *ngFor="let pokemon of pokemons" class="pokemon-card">
+      <div class="pokemon-number">#{{ pokemon.dexNr }}</div>
+      <a [routerLink]="['/pokemon', pokemon.names.English]" class="pokemon-link">
+        <h3 class="pokemon-name">{{ pokemon.names.English }}</h3>
+      </a>
+      <div class="pokemon-types">
+        <img
+          *ngIf="pokemon.primaryType"
+          [src]="getTypeIconUrl(pokemon.primaryType.type)"
+          [alt]="pokemon.primaryType.names.English + ' icon'"
+          class="type-icon"
+        />
+        <img
+          *ngIf="pokemon.secondaryType"
+          [src]="getTypeIconUrl(pokemon.secondaryType.type)"
+          [alt]="pokemon.secondaryType.names.English + ' icon'"
+          class="type-icon"
+        />
       </div>
     </div>
   </div>
+</div>
