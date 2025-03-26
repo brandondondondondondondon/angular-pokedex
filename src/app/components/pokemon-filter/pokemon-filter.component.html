@@ -1,0 +1,30 @@
+<mat-sidenav-container class="filter-container">
+    <mat-sidenav #drawer mode="side" [(opened)]="isFilterOpen" class="filter-drawer">
+      <h2>Filter Pokémon</h2>
+      <div class="filter-option">
+        <mat-form-field appearance="fill">
+          <mat-label>Type</mat-label>
+          <mat-select [(value)]="selectedType">
+            <mat-option value="">All</mat-option>
+            <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="filter-option">
+        <mat-form-field appearance="fill">
+          <mat-label>Generation</mat-label>
+          <mat-select [(value)]="selectedGeneration">
+            <mat-option value="">All</mat-option>
+            <mat-option *ngFor="let gen of generations" [value]="gen">{{ gen }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="filter-buttons">
+        <button mat-raised-button color="primary" (click)="applyFilters(); drawer.toggle()">
+          Apply Filters
+        </button>
+        <button mat-button (click)="resetFilters()">Reset</button>
+      </div>
+    </mat-sidenav>
+
+  </mat-sidenav-container>

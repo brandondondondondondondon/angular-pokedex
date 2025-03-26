@@ -6,8 +6,8 @@ $app-font-family: 'Roboto', sans-serif;
 
 .app-container {
   max-width: 1200px;
-  margin: 0 auto;       // Center container horizontally
-  padding: 20px;        // Add outer margins for a modern, airy look
+  margin: 0 auto;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -21,7 +21,7 @@ $app-font-family: 'Roboto', sans-serif;
   padding: 1.5rem;
   text-align: center;
   border-radius: 8px;
-  margin-bottom: 1rem;  // Add space below header
+  margin-bottom: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -31,7 +31,7 @@ $app-font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: center;
   border-radius: 4px;
-  margin-bottom: 1rem;  // Add spacing between nav and main content
+  margin-bottom: 1rem;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
 
   .nav-link {
@@ -50,12 +50,62 @@ $app-font-family: 'Roboto', sans-serif;
 }
 
 .app-content {
-  flex: 1;
-  padding: 1.5rem;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;  // Space between content and footer
+  position: relative;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+
+  // Filter sidebar on the left
+  app-pokemon-filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+  }
+
+  // Detail panel on the right
+  app-pokemon-detail {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+  }
+
+  app-pokemon-list {
+    flex: 1 1 auto;
+    padding: 20px;
+    overflow-y: auto;
+    background: #fff;
+    transition: margin 0.3s ease;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+// When the filter is open, slide in the left sidebar and adjust left margin
+.app-content.open-filter {
+  app-pokemon-filter {
+    transform: translateX(0);
+  }
+  app-pokemon-list {
+    margin-left: 300px;
+  }
+}
+
+// When a Pokemon is selected, slide in the detail panel and adjust right margin
+.app-content.open-detail {
+  app-pokemon-detail {
+    transform: translateX(0);
+  }
+  app-pokemon-list {
+    margin-right: 400px;
+  }
 }
 
 .app-footer {

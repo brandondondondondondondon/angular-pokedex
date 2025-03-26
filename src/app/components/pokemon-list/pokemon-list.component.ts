@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -13,7 +13,8 @@ import { PokemonStorageService } from '../../services/pokemon-storage.service';
 })
 export class PokemonListComponent implements OnInit {
   pokemons: Pokemon[] = [];
-
+  @Output() pokemonSelected = new EventEmitter<Pokemon>();
+  
   constructor(private pokemonStore: PokemonStorageService) { }
 
   ngOnInit(): void {
@@ -34,10 +35,10 @@ export class PokemonListComponent implements OnInit {
     // Convert dexNr to a 3-digit padded string
     const dexNr = pokemon.dexNr.toString().padStart(3, '0');
     // Convert the English name to lowercase and replace spaces (if any) with dashes
-    const name = pokemon.names.English.toLowerCase().replace(/ /g, '-');
+    const name = pokemon.names.English.toLowerCase().replace(/ /g, '-').replace(/[^a-zA-Z\-]/g, "");
     // Build and return the URL to the icon image. 
     // Adjust the URL path if your public folder is served differently.
-    return `/pokemon/icons/${dexNr}-${name}.svg`;
+    return pokemon.assets.image;
   }
 
   onIconError(event: Event): void {

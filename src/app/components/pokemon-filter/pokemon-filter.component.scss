@@ -1,0 +1,23 @@
+.filter-container {
+    height: 100%;
+  }
+  
+  .filter-drawer {
+    width: 300px;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .filter-option {
+    margin-bottom: 20px;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  mat-sidenav-content {
+    padding: 20px;
+  }

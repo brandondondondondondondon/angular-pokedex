@@ -1,0 +1,11 @@
+<nav class="app-nav">
+    <a routerLink="/" routerLinkActive="active" class="nav-link">
+        <button mat-icon-button>
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+        </button>
+    </a>
+    <!-- Add more navigation links if needed -->
+    <button mat-icon-button (click)="toggleFilter.emit()">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="filter_list"></mat-icon>
+    </button>
+</nav>

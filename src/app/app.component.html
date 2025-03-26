@@ -3,13 +3,17 @@
     <h1>Pokédex Demo</h1>
   </header>
   
-  <nav class="app-nav">
-    <a routerLink="/" routerLinkActive="active" class="nav-link">Home</a>
-    <!-- Add more navigation links if needed -->
-  </nav>
+  <app-pokemon-command-bar (toggleFilter)="toggleFilters()"></app-pokemon-command-bar>
   
-  <main class="app-content">
-    <router-outlet></router-outlet>
+  <main class="app-content" [class.open-filter]="filterVisible" [class.open-detail]="selectedPokemon">
+    <app-pokemon-filter></app-pokemon-filter>
+    <app-pokemon-list (pokemonSelected)="openPokemonDetail($event)"></app-pokemon-list>
+    <!-- Detail panel that opens when a Pokemon is selected -->
+    <app-pokemon-detail 
+      *ngIf="selectedPokemon" 
+      [pokemon]="selectedPokemon" 
+      (close)="closePokemonDetail()">
+    </app-pokemon-detail>
   </main>
   
   <footer class="app-footer">

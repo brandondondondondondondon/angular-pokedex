@@ -1,7 +1,7 @@
 <div class="pokedex">
   <h1>Pokédex</h1>
   <div class="pokemon-grid">
-    <div *ngFor="let pokemon of pokemons" class="pokemon-card">
+    <div *ngFor="let pokemon of pokemons" class="pokemon-card" (click)="pokemonSelected.emit(pokemon)">
       <div class="pokemon-number">#{{ pokemon.dexNr }}</div>
       <img
         class="pokemon-icon"
@@ -9,9 +9,7 @@
         [alt]="pokemon.names.English + ' icon'"
         (error)="onIconError($event)"
       />
-      <a [routerLink]="['/pokemon', pokemon.names.English]" class="pokemon-link">
-        <h3 class="pokemon-name">{{ pokemon.names.English }}</h3>
-      </a>
+      <h3 class="pokemon-name">{{ pokemon.names.English }}</h3>
       <div class="pokemon-types">
         <img
           *ngIf="pokemon.primaryType"

@@ -1,23 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { PokemonService } from '../../services/pokemon.service';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pokemon-detail',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './pokemon-detail.component.html',
-  styleUrls: ['./pokemon-detail.component.scss'],
-  imports: [CommonModule]
+  styleUrls: ['./pokemon-detail.component.scss']
 })
-export class PokemonDetailComponent implements OnInit {
-  pokemon: any;
+export class PokemonDetailComponent {
+  @Input() pokemon: any;
+  @Output() close = new EventEmitter<void>();
 
-  constructor(
-    private route: ActivatedRoute,
-    private pokemonService: PokemonService
-  ) {}
+  onClose(): void {
+    this.close.emit();
+  }
 
-  ngOnInit(): void {
+  getQuickMoveKeys(): string[] {
+    return this.pokemon && this.pokemon.quickMoves
+      ? Object.keys(this.pokemon.quickMoves)
+      : [];
+  }
 
+  getCinematicMoveKeys(): string[] {
+    return this.pokemon && this.pokemon.cinematicMoves
+      ? Object.keys(this.pokemon.cinematicMoves)
+      : [];
   }
 }
